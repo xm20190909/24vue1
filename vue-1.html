@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style type="text/css">
+    .border-gray{border:1px solid #666}
+</style>
+</head>
+<body>
+<div id="app">
+    <img  :src="img" style="width: 200px;">
+    <ul style="display: inline-block;position: absolute">
+        英雄联盟战队列表
+        <li v-for="(item,index) in ary" :key="index" @click="Click(index)" :class="{'border-gray':current==index}">
+            <p>{{item.name}}</p>
+        </li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                ary:[
+                    {name:'FPX',url:'http://img.crawler.qq.com/lolwebvideo/20190908175012/d39fcc1c0c570a76ce9c6422e1414a23/0'},
+                    {name:'RNG',url:'http://img.crawler.qq.com/lolwebvideo/20180925105921/0e58541c5b0f63984e4f8c6f4b6a2df6/0'},
+                    {name:'IG',url:'//img.crawler.qq.com/lolwebvideo/20190424151417/265633359ea7736f27a8ab91e1dd36f3/0'},
+                    {name:'EDG',url:'http://img.crawler.qq.com/lolwebvideo/20180925110111/80bf5eec07a3f921ba7b9821b046ecdd/0'}],
+                current:0,
+                img:"http://img.crawler.qq.com/lolwebvideo/20190908175012/d39fcc1c0c570a76ce9c6422e1414a23/0"
+            }
+        },
+        methods:{
+            Click(index){
+                this.current=index;
+                this.img=this.ary[index].url
+            }
+        }
+    })
+</script>
+</body>
+</html>
